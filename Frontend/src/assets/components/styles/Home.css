@@ -6,10 +6,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; 
-  width: 100vh;
+  
 }
-
 .contentHome {
   display: block;
   flex-direction: column;
@@ -26,6 +24,7 @@ h1 {
 
 .surahDetails {
   display: flex; 
+  overflow: visible;
   flex-direction: column;
   justify-content: space-between; 
   align-items: center; 
@@ -33,8 +32,6 @@ h1 {
   padding: 20px;
   margin: 20px auto;
   border: 2px solid goldenrod;
-  width: 100%; 
-  max-width: 500px; 
   color: #fff;
 }
 
