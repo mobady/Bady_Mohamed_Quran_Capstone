@@ -1,0 +1,69 @@
+body {
+  display: flex;
+justify-items: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 20px auto;
+}
+.contentAyah {
+  display: flex;
+  flex-direction: column;
+justify-items: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 20px auto;
+  border: 2px solid goldenrod;
+}
+
+.surahNameAyah {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('./surahName.jpeg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 40px;
+  height: 100px;
+  width: 400px;
+  color: #fff;
+}
+
+
+.ayah {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center; /* Center the Ayah text and number horizontally */
+  align-items: center; /* Align items vertically in the middle */
+  padding: 20px;
+  margin: 20px auto;
+  border: 2px solid goldenrod;
+  width: 100%;
+  max-width: 800px;
+  color: #fff;
+  box-sizing: border-box;
+  text-align: center; /* Center the Ayah text */
+}
+
+.ayahNum {
+  background: url('./ayahNum.jpeg') no-repeat center center;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px; /* Keep the background size consistent */
+  margin-right: 20px;
+  color: #f7d700;
+  font-weight: bold;
+}
+
+.ayahText {
+  text-align: center; /* Ensure the Ayah text is centered */
+  color: #fff;
+  word-wrap: break-word; /* Ensure long Ayah text wraps properly */
+  line-height: 1.5;
+  font-size: 1.2em; /* Increase font size for better readability */
+}

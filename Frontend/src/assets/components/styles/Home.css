@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun:wght@400..700&display=swap');
+
+body {
+  font-family: 'Reem Kufi Fun', sans-serif;
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+  width: 100vh;
+}
+
+.contentHome {
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 20px auto;
+  width: 100vh;
+}
+
+h1 {
+  color: #fff;
+}
+
+.surahDetails {
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center; 
+  text-align: center; 
+  padding: 20px;
+  margin: 20px auto;
+  border: 2px solid goldenrod;
+  width: 100%; 
+  max-width: 500px; 
+  color: #fff;
+}
+
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+}
+
+.surahName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('./surahName.jpeg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 40px;
+  height: 100px;
+  width: 400px;
+  color: #fff;
+}
+
+.surahDetails {
+  display: block;
+  padding: 20px;
+  border: 2px solid goldenrod;
+  color: #fff;
+  text-align: center;
+  width: 300px;
+}
+
+b {
+  font-size: 1.2em;
+}
+
+button {
+  font-family: 'Reem Kufi Fun', sans-serif;
+  padding: 10px 30px;
+  border-radius: 30px;
+  background-color: #daa520;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  border: 2px solid rgb(223, 222, 217);
+  cursor: pointer;
+  display: inline-block;
+  margin: 20px auto;
+}
+
+button:hover {
+  background: rgb(0,0,0);
+  background: linear-gradient(167deg, rgba(0,0,0,1) 1%, rgba(218,165,32,1) 100%);
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}

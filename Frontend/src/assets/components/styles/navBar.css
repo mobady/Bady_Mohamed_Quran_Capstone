@@ -1,0 +1,137 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: goldenrod; 
+    border-bottom: 2px solid #ffd700;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100vh;
+  }
+  
+  .logo h1 {
+    font-size: 1.6em;
+    margin: 0;
+    color: #000; 
+  }
+  
+ 
+  .nav-links {
+    display: flex;
+    list-style: none;
+    transition: left 0.3s ease;
+    left: -100%; 
+    position: absolute;
+    background-color: #000;
+    top: 60px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    color: #000;
+  }
+  
+
+  .nav-links.active {
+    left: 0; 
+  }
+  
+  @media (min-width: 768px) {
+    .nav-links {
+      display: flex;
+      position: static;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      background-color: transparent;
+      width: auto;
+      left: 0;
+    }
+  }
+  
+
+  .nav-links li {
+    margin: 0 20px;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: black; 
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links li a:hover {
+    color: #fff;
+  }
+  
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #000;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+  
+ 
+    .nav-links {
+      position: absolute;
+      top: 60px;
+      left: -100%;
+      width: 100%;
+      background-color: #000;
+      transition: left 0.3s ease;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+    }
+  
+    .nav-links.active {
+      left: 0;
+    }
+  
+    .nav-links li {
+      margin: 10px 0;
+    }
+  }
+  
+
+  .nav-links li a {
+    font-size: 1.2em;
+    padding: 10px 20px;
+  }
+  
+ 
+.logo-button {
+    text-decoration: none; 
+  }
+  
+  .logo-button h1 {
+    font-size: 1.8em;
+    margin: 0;
+    color: #000; /* Button color */
+    background-color: goldenrod; /* Button background */
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: #000 1px solid;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .logo-button h1:hover {
+    background: rgb(0,0,0);
+  background: linear-gradient(167deg, rgba(0,0,0,1) 1%, rgba(218,165,32,1) 100%);
+  }
+  

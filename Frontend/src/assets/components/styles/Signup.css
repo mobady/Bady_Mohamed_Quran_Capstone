@@ -1,0 +1,66 @@
+body {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Reem Kufi Fun', sans-serif;
+  }
+  
+  .signup-container {
+    background-color: #000;
+    border: 2px solid goldenrod;
+    border-radius: 10px;
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .signup-form h2 {
+    color: goldenrod;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    color: goldenrod;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid goldenrod;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .submit-button {
+    background-color: goldenrod;
+    color: #fff;
+    border: 2px solid goldenrod;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .submit-button:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
