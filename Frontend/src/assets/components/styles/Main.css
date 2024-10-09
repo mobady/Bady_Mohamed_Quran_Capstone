@@ -1,4 +1,9 @@
 
+.main {
+  display: flex;
+    justify-content: center;
+    margin: 40px;
+}
   .contentMain {
     text-align: center;
     color: white;
@@ -7,4 +12,3 @@
     background-color: #000;
     margin: 50px auto;
   }
-  

@@ -1,13 +1,18 @@
 body {
     background-color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+   display: flex;
+   justify-content: center;
+   justify-items: center;
+   width: 100vw;
     margin: 0;
     font-family: 'Reem Kufi Fun', sans-serif;
   }
-  
+
+  .signup {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+  }
   .signup-container {
     background-color: #000;
     border: 2px solid goldenrod;
@@ -17,6 +22,7 @@ body {
     width: 100%;
     color: #fff;
     text-align: center;
+    justify-content: center;
   }
   
   .signup-form h2 {

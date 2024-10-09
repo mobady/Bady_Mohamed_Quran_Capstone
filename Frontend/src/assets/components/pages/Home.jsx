@@ -17,7 +17,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="contentHome">
+    <div >
       <h1>Quran Surahs</h1>
       <ul>
         {surahs.map(surah => (

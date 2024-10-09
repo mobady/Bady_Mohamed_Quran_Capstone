@@ -11,7 +11,7 @@ function Surah() {
     async function fetchAyahs() {
       const response = await fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}`);
       const result = await response.json();
-      console.log(result.data)
+      console.log(result)
       setAyahs(result.data.ayahs);
       setSurahName(result.data.name)
     }

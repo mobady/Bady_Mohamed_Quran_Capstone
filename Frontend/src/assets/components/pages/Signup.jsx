@@ -18,6 +18,7 @@ function Signup() {
   };
 
   return (
+    <div className='signup'>
     <div className="signup-container">
       <form onSubmit={handleSubmit} className="signup-form">
         <h2>Signup</h2>
@@ -56,6 +57,7 @@ function Signup() {
         </div>
         <button type="submit" className="submit-button">Sign Up</button>
       </form>
+    </div>
     </div>
   );
 }
