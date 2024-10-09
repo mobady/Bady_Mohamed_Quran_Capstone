@@ -4,6 +4,7 @@ import "dotenv/config"
 import connectDB from "./config.js"
 import Quran from "./models/QuranModel.js"
 import surahs from "./data.js"
+import Surah from "./models/SurahModel.js"
 
 const app = express()
 const PORT = 8080
@@ -25,11 +26,12 @@ app.get('/quran', async (req,res) =>{
 })
 
 
-app.get('/seedRoute', async (req,res) =>{
+app.get('/surah', async (req,res) =>{
     try {
 
-      // await Surah.insertMany(surahs)
-        //
+      await Surah.insertMany(surahs)
+      console.log('add data to my database')
+        
     } catch (error) {
         
     }
