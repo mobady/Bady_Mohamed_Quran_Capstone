@@ -56,9 +56,10 @@ ul {
   background-size: cover;
   background-repeat: no-repeat;
   padding: 40px;
-  height: 100px;
-  width: 400px;
+  height: 200px;
+  width: 800px;
   color: #fff;
+  font-size: 3.5em;
 }
 
 .surahDetails {
@@ -67,12 +68,11 @@ ul {
   border: 2px solid goldenrod;
   color: #fff;
   text-align: center;
-  width: 300px;
+  width: 600px;
+  font-size: 2em;
 }
 
-b {
-  font-size: 1.2em;
-}
+
 
 button {
   font-family: 'Reem Kufi Fun', sans-serif;

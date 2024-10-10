@@ -29,6 +29,7 @@ function Surah() {
             <span className="ayahNum">{ayah.numberInSurah}</span>
           </li>
         ))}
+        <li className='end'>صَدَقَ اللهُ العَلِيُّ العَظيمْ</li>
       </ul>
     </div>
 

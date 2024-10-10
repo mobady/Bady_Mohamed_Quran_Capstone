@@ -14,7 +14,6 @@ justify-items: center;
   align-items: center;
   text-align: center;
   margin: 20px auto;
-  border: 2px solid goldenrod;
 }
 
 .surahNameAyah {
@@ -29,8 +28,24 @@ justify-items: center;
   height: 100px;
   width: 400px;
   color: #fff;
+  font-size: 3.2em;
 }
 
+.end {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('./end.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 40px;
+  height: 220px;
+  width: 600px;
+  color: #fff;
+  font-size: 3.2em;
+  margin: 50px;
+}
 
 .ayah {
   display: flex;
@@ -58,6 +73,7 @@ justify-items: center;
   margin-right: 20px;
   color: #f7d700;
   font-weight: bold;
+  font-size: 1.5em;
 }
 
 .ayahText {
@@ -65,5 +81,6 @@ justify-items: center;
   color: #fff;
   word-wrap: break-word; /* Ensure long Ayah text wraps properly */
   line-height: 1.5;
-  font-size: 1.2em; /* Increase font size for better readability */
+  font-size: 2.3em; /* Increase font size for better readability */
 }
+
