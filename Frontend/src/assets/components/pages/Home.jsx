@@ -7,10 +7,11 @@ function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("https://api.alquran.cloud/v1/meta");
+      const response = await fetch("http://localhost:8080/ayah");
       const result = await response.json();
       console.log(result);
-      setSurahs(result.data.surahs.references); // Save the 'surahs.references' array
+      console.log(result);
+      setSurahs(result); // Save the 'surahs.references' array
     }
 
     fetchData();
@@ -21,11 +22,11 @@ function Home() {
       <h1>Quran Surahs</h1>
       <ul>
         {surahs.map(surah => (
-          <li key={surah.number}>
+          <li key={surah._id}>
             <h2 className="surahName">{surah.englishName} - {surah.name}</h2>
             <div className="surahDetails">
               <p><b>Translation: </b>{surah.englishNameTranslation}</p>
-              <p><b>Number of Ayahs: </b>{surah.numberOfAyahs}</p>
+              <p><b>Number of Ayahs: </b>{surah.ayahs.length}</p>
               <p><b>Revelation Type: </b>{surah.revelationType}</p>
               <Link to={`/surah/${surah.number}`}>
                 <button className="buttonContainer">
