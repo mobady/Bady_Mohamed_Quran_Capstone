@@ -11,7 +11,7 @@ function Home() {
       const result = await response.json();
       console.log(result);
       console.log(result);
-      setSurahs(result); // Save the 'surahs.references' array
+      setSurahs(result); 
     }
 
     fetchData();
@@ -28,7 +28,7 @@ function Home() {
               <p><b>Translation: </b>{surah.englishNameTranslation}</p>
               <p><b>Number of Ayahs: </b>{surah.ayahs.length}</p>
               <p><b>Revelation Type: </b>{surah.revelationType}</p>
-              <Link to={`/surah/${surah.number}`}>
+              <Link to={`/ayah/${surah.number}`}>
                 <button className="buttonContainer">
                   Read Surah {surah.englishName}</button>
               </Link>

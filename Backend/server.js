@@ -23,6 +23,15 @@ app.get('/ayah', async (req,res) =>{
     }
 })
 
+app.get('/ayah/:id', async (req, res) => {
+    try {
+      const ayah = await Ayah.findOne({ number: req.params.id }); 
+      res.status(200).json(ayah);
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  });
+  
 
 app.listen(PORT, () =>{
     console.log("Listening on port: " + PORT)
