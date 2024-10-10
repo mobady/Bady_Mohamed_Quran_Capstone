@@ -3,7 +3,8 @@ import mongoose, { Types } from "mongoose";
 const UserSchema = mongoose.Schema({
     username :{type : String} ,
     email :{ type : String} ,
-    password :{ type : String}
+    password :{ type : String},
+    completed : {type : Boolean, default : false}
 })
 const User = mongoose.model('user',UserSchema)
 

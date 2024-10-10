@@ -6,11 +6,12 @@ import Quran from "./models/QuranModel.js"
 
 
 import Ayah from "./models/AyahModel.js"
-import User from "./models/LoginModel.js"
+import User from "./models/UserModel.js"
 
 const app = express()
 const PORT = 8080
 app.use(cors())
+app.use(express.json())
 
 
 app.get('/ayah', async (req,res) =>{
@@ -32,15 +33,27 @@ app.get('/ayah/:id', async (req, res) => {
       res.status(400).json(error);
     }
   });
-  app.get('/user', async (req,res) =>{
+
+  app.post('/user', async (req,res) =>{
     try {
-        const users = await User.find({})
-        console.log("Get res from database /user")
-        res.status(200).json(users)
+        const newUser = await User.create(req.body)
+        console.log("Post new user to database /user")
+        res.status(201).json(newUser)
     } catch (error) {
         console.log(error)
         res.status(400).json(error)
     }
+})
+
+app.get('/user', async (req,res) =>{
+  try {
+      const users = await User.find({})
+      console.log("Get res from database /user")
+      res.status(200).json(users)
+  } catch (error) {
+      console.log(error)
+      res.status(400).json(error)
+  }
 })
   
 
