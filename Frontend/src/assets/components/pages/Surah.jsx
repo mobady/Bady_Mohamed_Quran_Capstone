@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import "../styles/Surah.css"
 
-const URL = "http://localhost:8080/surah/"
+const URL = "http://localhost:8080/ayah/"
 
 function Surah() {
   const { id } = useParams();
