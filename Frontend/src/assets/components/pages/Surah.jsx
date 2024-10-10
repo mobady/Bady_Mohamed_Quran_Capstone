@@ -2,27 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import "../styles/Surah.css"
 
+const URL = "http://localhost:8080/surah/"
+
 function Surah() {
-  const { surahNumber } = useParams();
+  const { id } = useParams();
   const [ayahs, setAyahs] = useState([]);
   const [surahName, setSurahName] = useState('');
 
   useEffect(() => {
     async function fetchAyahs() {
-      const response = await fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}`);
+      const response = await fetch(`${URL}${id}`);
       const result = await response.json();
       console.log(result)
-      setAyahs(result.data.ayahs);
-      setSurahName(result.data.name)
+      setAyahs(result.ayahs);
+      setSurahName(result.name)
     }
     fetchAyahs();
-  }, [surahNumber]);
+  }, [id]);
   return (
     <div className="contentAyah">
       <h1 className="surahNameAyah">{surahName}</h1>
       <ul>
         {ayahs.map((ayah) => (
-          <li key={ayah.numberInSurah} className="ayah">
+          <li key={ayah._id} className="ayah">
             <span className="ayahText">{ayah.text}</span>
             <span className="ayahNum">{ayah.numberInSurah}</span>
           </li>
