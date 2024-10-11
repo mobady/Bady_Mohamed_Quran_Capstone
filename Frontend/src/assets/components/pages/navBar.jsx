@@ -31,7 +31,7 @@ function Navbar() {
                     <Link to="/login" onClick={toggleMenu}>Login</Link>
                 </li>
                 <li>
-                    <Link to="/login" onClick={toggleMenu}>Quiz</Link>
+                    <Link to="/quiz" onClick={toggleMenu}>Quiz</Link>
                 </li>
             </div>
             <div className="menu-toggle" onClick={toggleMenu}>

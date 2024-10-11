@@ -6,6 +6,7 @@ import './App.css';
 import Main from './assets/components/pages/Main';
 import Signup from './assets/components/pages/Signup';
 import Login from './assets/components/pages/Login';
+import Quiz from './assets/components/pages/Quiz';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/ayah/:id" element={<Surah />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path='/quiz' element={<Quiz />} />
         </Routes>
       </div>
     </Router>
