@@ -30,6 +30,9 @@ function Navbar() {
                 <li>
                     <Link to="/login" onClick={toggleMenu}>Login</Link>
                 </li>
+                <li>
+                    <Link to="/login" onClick={toggleMenu}>Quiz</Link>
+                </li>
             </div>
             <div className="menu-toggle" onClick={toggleMenu}>
                 <div className="bar"></div>
