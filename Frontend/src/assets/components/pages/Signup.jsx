@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/Signup.css';
+import { auth } from '../../config';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -12,9 +14,11 @@ function Signup() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
+    let response = await createUserWithEmailAndPassword(auth,email,password)
+    console.log(response)
   };
 
   return (
