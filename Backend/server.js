@@ -55,7 +55,18 @@ app.get('/user', async (req,res) =>{
       res.status(400).json(error)
   }
 })
-  
+
+app.get('/surahs', async (req,res) =>{
+  try {
+      const ayahs = await Ayah.find({})
+      console.log("Get res from databse /surahs")
+      res.status(200).json(ayahs)
+  } catch (error) {
+      console.log(error)
+      res.status(400).json(error)
+  }
+})
+
 
 app.listen(PORT, () =>{
     console.log("Listening on port: " + PORT)
