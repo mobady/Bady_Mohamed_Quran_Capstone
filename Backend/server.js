@@ -3,6 +3,7 @@ import cors from "cors"
 import "dotenv/config"
 import connectDB from "./config.js"
 import Quran from "./models/QuranModel.js"
+import Surah from "./models/SurahModel.js"
 
 
 import Ayah from "./models/AyahModel.js"
@@ -58,9 +59,9 @@ app.get('/user', async (req,res) =>{
 
 app.get('/surahs', async (req,res) =>{
   try {
-      const ayahs = await Ayah.find({})
+      const surahs = await Surah.find({})
       console.log("Get res from databse /surahs")
-      res.status(200).json(ayahs)
+      res.status(200).json(surahs)
   } catch (error) {
       console.log(error)
       res.status(400).json(error)
