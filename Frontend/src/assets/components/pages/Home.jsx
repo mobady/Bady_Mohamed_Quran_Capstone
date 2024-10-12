@@ -7,7 +7,7 @@ function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("http://localhost:8080/ayah");
+      const response = await fetch("http://localhost:8080/surahs");
       const result = await response.json();
       console.log(result);
       console.log(result);
@@ -26,7 +26,7 @@ function Home() {
             <h2 className="surahName">{surah.englishName} - {surah.name}</h2>
             <div className="surahDetails">
               <p><b>Translation: </b>{surah.englishNameTranslation}</p>
-              <p><b>Number of Ayahs: </b>{surah.ayahs.length}</p>
+              <p><b>Number of Ayahs: </b>{surah.numberOfAyahs}</p>
               <p><b>Revelation Type: </b>{surah.revelationType}</p>
               <Link to={`/ayah/${surah.number}`}>
                 <button className="buttonContainer">

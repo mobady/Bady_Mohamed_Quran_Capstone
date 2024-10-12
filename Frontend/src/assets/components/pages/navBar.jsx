@@ -22,7 +22,7 @@ function Navbar() {
                     <Link to="/" onClick={toggleMenu}>Home</Link>
                 </li>
                 <li>
-                    <Link to="/ayah" onClick={toggleMenu}>Surahs</Link>
+                    <Link to="/surahs" onClick={toggleMenu}>Surahs</Link>
                 </li>
                 <li>
                     <Link to="/signup" onClick={toggleMenu}>Signup</Link>

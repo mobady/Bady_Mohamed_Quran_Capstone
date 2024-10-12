@@ -59,7 +59,7 @@ app.get('/user', async (req,res) =>{
 
 app.get('/surahs', async (req,res) =>{
   try {
-      const surahs = await Surah.find({})
+      const surahs = await Surah.find({}).sort({number: 1})
       console.log("Get res from databse /surahs")
       res.status(200).json(surahs)
   } catch (error) {
