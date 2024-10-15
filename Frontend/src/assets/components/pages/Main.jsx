@@ -9,7 +9,7 @@ function Main() {
       <h1>Welcome to the Quran App</h1>
       <p>Explore the divine text of the Quran with a modern and interactive interface.</p>
       <div className="buttonContainer">
-      <Link to={"/ayah/"}>
+      <Link to={"/surahs/"}>
         <button>Start Reading</button>
         </Link>
       </div>

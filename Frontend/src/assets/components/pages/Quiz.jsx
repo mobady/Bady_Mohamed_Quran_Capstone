@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import "../styles/Quiz.css"
+import "../styles/Quiz.css";
 
 function Quiz() {
   const [surahs, setSurahs] = useState([]);
@@ -8,6 +8,9 @@ function Quiz() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
+
+  const user = JSON.parse(localStorage.getItem('user'));
+  const userId = user ? user._id : null;
 
   useEffect(() => {
     axios.get('http://localhost:8080/surahs')
@@ -66,6 +69,30 @@ function Quiz() {
       setShowScore(true);
     }
   };
+
+  
+  const saveScore = () => {
+    if (!userId) {
+      console.error('User not logged in');
+      return;
+    }
+
+    axios.put(`http://localhost:8080/users/${userId}/score`, {
+      score: score,
+    })
+      .then(response => {
+        console.log('Score updated successfully:', response.data);
+      })
+      .catch(error => {
+        console.error('Error updating score:', error);
+      });
+  };
+
+  useEffect(() => {
+    if (showScore) {
+      saveScore(); 
+    }
+  }, [showScore]);
 
   return (
     <div>
