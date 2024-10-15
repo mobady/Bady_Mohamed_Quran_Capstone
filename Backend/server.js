@@ -4,8 +4,7 @@ import "dotenv/config"
 import connectDB from "./config.js"
 import Quran from "./models/QuranModel.js"
 import Surah from "./models/SurahModel.js"
-
-
+import Score from "./models/ScoreModel.js"
 import Ayah from "./models/AyahModel.js"
 import User from "./models/UserModel.js"
 
