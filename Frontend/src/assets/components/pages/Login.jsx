@@ -26,10 +26,23 @@ function Login() {
       username: formData.username,
       email: formData.email,
       user_id: response.id
+    }).then(response => {
+      const user = response.data;
+      localStorage.setItem('user', JSON.stringify(user));
+
+      // Check if there's a redirect path saved in localStorage
+      const redirectAfterLogin = localStorage.getItem('redirectAfterLogin');
+      if (redirectAfterLogin) {
+        localStorage.removeItem('redirectAfterLogin'); // Clear the saved path after use
+        navigate(redirectAfterLogin); // Navigate to the saved path
+      } else {
+        navigate('/'); // Default to home if no path was saved
+      }
     })
-    console.log(formData);
-    navigate("/")
-  };
+    .catch(error => {
+      console.error('Error logging in:', error);
+    });
+};
 
   return (
     <div className="login">

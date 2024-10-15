@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "../styles/Quiz.css";
 
@@ -9,8 +10,16 @@ function Quiz() {
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
 
-  const user = JSON.parse(localStorage.getItem('user'));
-  const userId = user ? user._id : null;
+  const navigate = useNavigate();
+
+  
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
+      localStorage.setItem('redirectAfterLogin', '/quiz'); 
+      navigate('/login'); 
+    }
+  }, [navigate]);
 
   useEffect(() => {
     axios.get('http://localhost:8080/surahs')
@@ -72,11 +81,13 @@ function Quiz() {
 
   
   const saveScore = () => {
-    if (!userId) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
       console.error('User not logged in');
       return;
     }
 
+    const userId = user._id;
     axios.put(`http://localhost:8080/users/${userId}/score`, {
       score: score,
     })
