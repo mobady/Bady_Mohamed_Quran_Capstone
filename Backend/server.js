@@ -4,7 +4,6 @@ import "dotenv/config"
 import connectDB from "./config.js"
 import Quran from "./models/QuranModel.js"
 import Surah from "./models/SurahModel.js"
-import Score from "./models/ScoreModel.js"
 import Ayah from "./models/AyahModel.js"
 import User from "./models/UserModel.js"
 
@@ -68,13 +67,18 @@ app.get('/surahs', async (req,res) =>{
 })
 
 
-app.post('/score', (req, res) => {
-    const { userId, score } = req.body;
+app.put('/users/:userId/score', (req, res) => {
+    const { userId } = req.params;
+    const { score } = req.body;
   
-    
-    Score.create({ userId, score })
-      .then(() => res.status(201).json({ message: 'Score saved successfully!' }))
-      .catch((error) => res.status(500).json({ message: 'Failed to save score', error }));
+    User.findByIdAndUpdate(userId, { score: score }, { new: true })
+      .then(updatedUser => {
+        res.json(updatedUser);
+      })
+      .catch(error => {
+        console.error('Error updating score:', error);
+        res.status(500).json({ error: 'Error updating score' });
+      });
   });
   
 
