@@ -69,6 +69,16 @@ app.get('/surahs', async (req,res) =>{
 })
 
 
+app.post('/score', (req, res) => {
+    const { userId, score } = req.body;
+  
+    
+    Score.create({ userId, score })
+      .then(() => res.status(201).json({ message: 'Score saved successfully!' }))
+      .catch((error) => res.status(500).json({ message: 'Failed to save score', error }));
+  });
+  
+
 app.listen(PORT, () =>{
     console.log("Listening on port: " + PORT)
     connectDB()
