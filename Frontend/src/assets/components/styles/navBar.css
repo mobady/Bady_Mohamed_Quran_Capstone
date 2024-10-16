@@ -141,3 +141,8 @@
   background: linear-gradient(167deg, rgba(0,0,0,1) 1%, rgba(218,165,32,1) 100%);
   }
   
+  .logout {
+    background-color: black;
+    color: goldenrod;
+    margin-left: auto;
+  }

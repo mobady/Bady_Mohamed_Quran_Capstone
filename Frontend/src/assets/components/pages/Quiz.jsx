@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "../styles/Quiz.css";
 
@@ -10,17 +9,7 @@ function Quiz({userAuth}) {
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
 
-  const navigate = useNavigate();
-
-  
-  // useEffect(() => {
-  //   const user = JSON.parse(localStorage.getItem('user'));
-  //   if (!user) {
-  //     localStorage.setItem('redirectAfterLogin', '/quiz'); 
-  //     navigate('/login'); 
-  //   }
-  // }, [navigate]);
-
+ 
   useEffect(() => {
     axios.get('http://localhost:8080/surahs')
       .then(response => {
@@ -56,11 +45,6 @@ function Quiz({userAuth}) {
 
 
       }
-
-
-      // while (incorrectAnswers.length < 3) {
-        
-      // }
 
       setCurrentQuestion({
         questionText: `${questionType.text} "${selectedSurah.name}"?`,

@@ -33,7 +33,7 @@ app.get('/ayah/:id', async (req, res) => {
     }
   });
 
-  app.post('/user', async (req,res) =>{
+  app.post('/users', async (req,res) =>{
     try {
         const newUser = await User.create(req.body)
         console.log("Post new user to database /user")
@@ -44,7 +44,7 @@ app.get('/ayah/:id', async (req, res) => {
     }
 })
 
-app.get('/user', async (req,res) =>{
+app.get('/users', async (req,res) =>{
   try {
       const users = await User.find({})
       console.log("Get res from database /user")
@@ -71,7 +71,7 @@ app.put('/users/:userId/score', (req, res) => {
     const { userId } = req.params;
     const { score } = req.body;
   console.log('hello',score,userId)
-    User.findByIdAndUpdate(userId, { score: score }, { new: true })
+    User.findByIdAndUpdate(userId, {$inc:{ score: score}}, { new: true })
       .then(updatedUser => {
         console.log(updatedUser)
         res.json(updatedUser);

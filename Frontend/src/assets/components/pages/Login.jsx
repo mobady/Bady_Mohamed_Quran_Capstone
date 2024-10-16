@@ -22,27 +22,9 @@ function Login({setUserAuth}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let response = await signInWithEmailAndPassword(auth, formData.email, formData.password)
+    console.log(formData)
     setUserAuth(response.user)
-    await axios.post("http://localhost:8080/user", {
-      username: formData.username,
-      email: formData.email,
-      user_id: response.id
-    }).then(response => {
-      const user = response.data;
-      localStorage.setItem('user', JSON.stringify(user));
-
-      // Check if there's a redirect path saved in localStorage
-      const redirectAfterLogin = localStorage.getItem('redirectAfterLogin');
-      if (redirectAfterLogin) {
-        localStorage.removeItem('redirectAfterLogin'); // Clear the saved path after use
-        navigate(redirectAfterLogin); // Navigate to the saved path
-      } else {
-        navigate('/'); // Default to home if no path was saved
-      }
-    })
-    .catch(error => {
-      console.error('Error logging in:', error);
-    });
+  navigate("/")
 };
 
   return (
