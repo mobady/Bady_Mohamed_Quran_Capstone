@@ -8,6 +8,7 @@ function Quiz({userAuth}) {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
+  const [userScore, setUserScore] = useState(null);
 
  
   useEffect(() => {
@@ -97,6 +98,18 @@ function Quiz({userAuth}) {
     window.location.reload();
   };
 
+  const fetchUserScore = async () => {
+    axios.get(`http://localhost:8080/users/${userAuth.currentUser.uid}`)
+      .then(response => {
+        setUserScore(response.data.score);
+      })
+      .catch(error => {
+        console.error('Error fetching user score:', error);
+      });
+  };
+  fetchUserScore();
+  console.log(userScore)
+  
   return (
     <div className="Quiz">
       <div className='quizStart'>
