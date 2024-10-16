@@ -93,13 +93,19 @@ function Quiz({userAuth}) {
     }
   }, [showScore]);
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   return (
-    <div>
+    <div className="Quiz">
+      <div className='quizStart'>
       <h2>Surah Quiz</h2>
       {showScore ? (
         <div>
           <h3>Quiz Finished!</h3>
           <p>Your Score: {score} / 5</p>
+          <button onClick={refreshPage}>Retry Quiz</button>
         </div>
       ) : (
         currentQuestion && (
@@ -115,6 +121,7 @@ function Quiz({userAuth}) {
           </div>
         )
       )}
+    </div>
     </div>
   );
 }
