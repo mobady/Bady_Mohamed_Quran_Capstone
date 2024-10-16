@@ -9,6 +9,7 @@ function Quiz({userAuth}) {
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [userScore, setUserScore] = useState(null);
+  const [userName, setUserName] = useState(null);
 
  
   useEffect(() => {
@@ -81,7 +82,8 @@ function Quiz({userAuth}) {
       score: score,
     })
       .then(response => {
-        console.log('Score updated successfully:', response.data);
+        console.log("user profile :",response.data)
+        setUserName(response.data.username)
       })
       .catch(error => {
         console.error('Error updating score:', error);
@@ -101,6 +103,7 @@ function Quiz({userAuth}) {
   const fetchUserScore = async () => {
     axios.get(`http://localhost:8080/users/${userAuth.currentUser.uid}`)
       .then(response => {
+        
         setUserScore(response.data.score);
       })
       .catch(error => {
@@ -113,10 +116,10 @@ function Quiz({userAuth}) {
   return (
     <div className="Quiz">
       <div className='quizStart'>
-      <h2>Surah Quiz</h2>
+      <ul>Surah Quiz :</ul>
       {showScore ? (
         <div>
-          <h3>Quiz Finished!</h3>
+          <li>Quiz Finished!</li>
           <p>Your Score: {score} / 5</p>
           <button onClick={refreshPage}>Retry Quiz</button>
         </div>
@@ -134,6 +137,11 @@ function Quiz({userAuth}) {
           </div>
         )
       )}
+    </div>
+    <div className="userProfile">
+      <ul>User  Profile :</ul>
+      <li> Username :{userName}</li>
+      <li>Totale Score : {userScore} </li>
     </div>
     </div>
   );

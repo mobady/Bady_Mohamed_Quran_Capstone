@@ -1,5 +1,6 @@
 .Quiz {
     display: flex;
+    /* align-items: center; */
     justify-content: center;
     margin: 40px;
     color: goldenrod;
@@ -14,4 +15,19 @@
 }
 .quizStart p {
     color: goldenrod;
+}
+
+.userProfile {
+    padding: 20px;
+    border: 2px solid goldenrod;
+    color: #fff; 
+    margin-left: auto;
+    width: 600px;
+    font-size: 2em;
+}
+.Quiz ul {
+    font-size: 2em;
+}
+.Quiz li {
+    list-style: none;
 }
