@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "../styles/Quiz.css";
 
-function Quiz() {
+function Quiz({userAuth}) {
   const [surahs, setSurahs] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -13,17 +13,18 @@ function Quiz() {
   const navigate = useNavigate();
 
   
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (!user) {
-      localStorage.setItem('redirectAfterLogin', '/quiz'); 
-      navigate('/login'); 
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem('user'));
+  //   if (!user) {
+  //     localStorage.setItem('redirectAfterLogin', '/quiz'); 
+  //     navigate('/login'); 
+  //   }
+  // }, [navigate]);
 
   useEffect(() => {
     axios.get('http://localhost:8080/surahs')
       .then(response => {
+        console.log("reqeust work")
         setSurahs(response.data);
         generateNewQuestion(response.data);
       })
@@ -33,6 +34,7 @@ function Quiz() {
   }, []);
 
   const generateNewQuestion = (surahList) => {
+    console.log("generate questions")
     if (surahList.length > 0) {
       const randomIndex = Math.floor(Math.random() * surahList.length);
       const selectedSurah = surahList[randomIndex];
@@ -46,12 +48,19 @@ function Quiz() {
       const questionType = questionTypes[Math.floor(Math.random() * questionTypes.length)];
 
       const incorrectAnswers = [];
-      while (incorrectAnswers.length < 3) {
+      for(let i =0;i<3;i++){console.log("loop")
         const randomSurah = surahList[Math.floor(Math.random() * surahList.length)];
         if (randomSurah._id !== selectedSurah._id && !incorrectAnswers.includes(randomSurah[questionType.key])) {
           incorrectAnswers.push(randomSurah[questionType.key]);
         }
+
+
       }
+
+
+      // while (incorrectAnswers.length < 3) {
+        
+      // }
 
       setCurrentQuestion({
         questionText: `${questionType.text} "${selectedSurah.name}"?`,
@@ -62,7 +71,7 @@ function Quiz() {
   };
 
   const shuffleOptions = (options) => {
-    return options.sort(() => Math.random() - 0.5);
+    return options.sort(() => Math.random() - 1);
   };
 
   const handleAnswer = (selectedAnswer) => {
@@ -81,14 +90,9 @@ function Quiz() {
 
   
   const saveScore = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (!user) {
-      console.error('User not logged in');
-      return;
-    }
 
-    const userId = user._id;
-    axios.put(`http://localhost:8080/users/${userId}/score`, {
+    console.log(userAuth)
+    axios.put(`http://localhost:8080/users/${userAuth.currentUser.uid}/score`, {
       score: score,
     })
       .then(response => {

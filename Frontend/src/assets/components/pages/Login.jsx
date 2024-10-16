@@ -5,7 +5,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({setUserAuth}) {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: '',
@@ -22,6 +22,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let response = await signInWithEmailAndPassword(auth, formData.email, formData.password)
+    setUserAuth(response.user)
     await axios.post("http://localhost:8080/user", {
       username: formData.username,
       email: formData.email,

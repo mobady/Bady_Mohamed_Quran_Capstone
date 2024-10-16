@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
 
-function Signup() {
+function Signup({setUserAuth}) {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     username: '',
@@ -33,10 +33,12 @@ function Signup() {
     setLoading(true)
     try {
       let response = await createUserWithEmailAndPassword(auth, formData.email, formData.password)
+      console.log("sign up response", response)
+      setUserAuth(response.user)
       await axios.post("http://localhost:8080/user", {
         username: formData.username,
         email: formData.email,
-        user_id: response.id
+        _id: response.user.uid
       })
       setError(null)
       setSuccess("congrats, you have signed up")

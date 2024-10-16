@@ -70,9 +70,10 @@ app.get('/surahs', async (req,res) =>{
 app.put('/users/:userId/score', (req, res) => {
     const { userId } = req.params;
     const { score } = req.body;
-  
+  console.log('hello',score,userId)
     User.findByIdAndUpdate(userId, { score: score }, { new: true })
       .then(updatedUser => {
+        console.log(updatedUser)
         res.json(updatedUser);
       })
       .catch(error => {
