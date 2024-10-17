@@ -46,7 +46,7 @@ app.post('/users', async (req, res) => {
 
 app.get('/users', async (req, res) => {
   try {
-    const users = await User.find({})
+    const users = await User.find({}).sort({ score: -1 }).limit(3)
     console.log("Get res from database /user")
     res.status(200).json(users)
   } catch (error) {
