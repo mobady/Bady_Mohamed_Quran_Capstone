@@ -91,7 +91,7 @@ function Signup({setUserAuth}) {
             />
           </div>
           <button type="submit" className="submit-button">Sign Up</button>
-          <h3>already have an account <Link to ={"/login/"}>Login Here</Link></h3>
+          <h3>Already have an account?  <Link to ={"/login/"}>Login Here</Link></h3>
           {loading && <h5>loading</h5>}
           {success && <h5 style={{ color: "green" }}>log in is succesful</h5>}
           {error && <h5 style={{ color: "red" }}>{error} </h5>}
