@@ -83,36 +83,41 @@ function Quiz({userAuth}) {
     })
       .then(response => {
         console.log("user profile :",response.data)
-        setUserName(response.data.username)
       })
       .catch(error => {
         console.error('Error updating score:', error);
       });
-  };
-
-  useEffect(() => {
-    if (showScore) {
-      saveScore(); 
-    }
-  }, [showScore]);
-
-  const refreshPage = () => {
-    window.location.reload();
-  };
-
-  const fetchUserScore = async () => {
-    axios.get(`http://localhost:8080/users/${userAuth.currentUser.uid}`)
+    };
+    
+    useEffect(() => {
+      if (showScore) {
+        saveScore(); 
+      }
+    }, [showScore]);
+    
+    const refreshPage = () => {
+      window.location.reload();
+    };
+    
+    const fetchUserScore = async () => {
+      axios.get(`http://localhost:8080/users/${userAuth.currentUser.uid}`)
       .then(response => {
-        
+        console.log("test",response)
+        setUserName(response.data.username)
         setUserScore(response.data.score);
       })
       .catch(error => {
         console.error('Error fetching user score:', error);
       });
   };
-  fetchUserScore();
   console.log(userScore)
-  
+  useEffect(()=>{
+    if(userAuth){
+
+      fetchUserScore();
+    }
+
+  },[userAuth])
   return (
     <div className="Quiz">
       <div className='quizStart'>
@@ -120,7 +125,7 @@ function Quiz({userAuth}) {
       {showScore ? (
         <div>
           <li>Quiz Finished!</li>
-          <p>Your Score: {score} / 5</p>
+          <li>Your Score:<span> {score} / 5</span></li>
           <button onClick={refreshPage}>Retry Quiz</button>
         </div>
       ) : (
@@ -140,8 +145,8 @@ function Quiz({userAuth}) {
     </div>
     <div className="userProfile">
       <ul>User  Profile :</ul>
-      <li> Username :{userName}</li>
-      <li>Totale Score : {userScore} </li>
+      <li> Username : <span>{userName}</span> </li>
+      <li>Totale Score : <span>{userScore}</span> </li>
     </div>
     </div>
   );

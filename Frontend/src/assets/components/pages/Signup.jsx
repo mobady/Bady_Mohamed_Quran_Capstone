@@ -35,14 +35,14 @@ function Signup({setUserAuth}) {
       let response = await createUserWithEmailAndPassword(auth, formData.email, formData.password)
       console.log("sign up response", response)
       setUserAuth(response.user)
-      await axios.post("http://localhost:8080/user", {
+      await axios.post("http://localhost:8080/users", {
         username: formData.username,
         email: formData.email,
         _id: response.user.uid
       })
       setError(null)
       setSuccess("congrats, you have signed up")
-      navigate("/login")
+      navigate("/")
     } catch (error) {
       console.log(error.code)
       setError(error.code)

@@ -1,6 +1,5 @@
 .Quiz {
     display: flex;
-    /* align-items: center; */
     justify-content: center;
     margin: 40px;
     color: goldenrod;
@@ -13,7 +12,7 @@
     width: 600px;
     font-size: 2em;
 }
-.quizStart p {
+.Quiz span {
     color: goldenrod;
 }
 
