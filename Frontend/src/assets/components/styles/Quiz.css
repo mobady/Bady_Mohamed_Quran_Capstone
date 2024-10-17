@@ -30,3 +30,10 @@
 .Quiz li {
     list-style: none;
 }
+.top {
+    background-color: rgb(48, 45, 45);
+    border: 2px solid goldenrod;
+    padding: 20px;
+    border-radius: 25px;
+    margin: 10px;
+}

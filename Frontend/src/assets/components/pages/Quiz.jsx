@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "../styles/Quiz.css";
 
-function Quiz({userAuth}) {
+function Quiz({ userAuth }) {
   const [surahs, setSurahs] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -10,8 +10,9 @@ function Quiz({userAuth}) {
   const [showScore, setShowScore] = useState(false);
   const [userScore, setUserScore] = useState(null);
   const [userName, setUserName] = useState(null);
+  const [top, setTop] = useState(null);
 
- 
+
   useEffect(() => {
     axios.get('http://localhost:8080/surahs')
       .then(response => {
@@ -39,7 +40,8 @@ function Quiz({userAuth}) {
       const questionType = questionTypes[Math.floor(Math.random() * questionTypes.length)];
 
       const incorrectAnswers = [];
-      for(let i =0;i<3;i++){console.log("loop")
+      for (let i = 0; i < 3; i++) {
+        console.log("loop")
         const randomSurah = surahList[Math.floor(Math.random() * surahList.length)];
         if (randomSurah._id !== selectedSurah._id && !incorrectAnswers.includes(randomSurah[questionType.key])) {
           incorrectAnswers.push(randomSurah[questionType.key]);
@@ -74,7 +76,7 @@ function Quiz({userAuth}) {
     }
   };
 
-  
+
   const saveScore = () => {
 
     console.log(userAuth)
@@ -82,27 +84,27 @@ function Quiz({userAuth}) {
       score: score,
     })
       .then(response => {
-        console.log("user profile :",response.data)
+        console.log("user profile :", response.data)
       })
       .catch(error => {
         console.error('Error updating score:', error);
       });
-    };
-    
-    useEffect(() => {
-      if (showScore) {
-        saveScore(); 
-      }
-    }, [showScore]);
-    
-    const refreshPage = () => {
-      window.location.reload();
-    };
-    
-    const fetchUserScore = async () => {
-      axios.get(`http://localhost:8080/users/${userAuth.currentUser.uid}`)
+  };
+
+  useEffect(() => {
+    if (showScore) {
+      saveScore();
+    }
+  }, [showScore]);
+
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
+  const fetchUserScore = async () => {
+    axios.get(`http://localhost:8080/users/${userAuth.currentUser.uid}`)
       .then(response => {
-        console.log("test",response)
+        console.log("test", response)
         setUserName(response.data.username)
         setUserScore(response.data.score);
       })
@@ -111,43 +113,73 @@ function Quiz({userAuth}) {
       });
   };
   console.log(userScore)
-  useEffect(()=>{
-    if(userAuth){
+  useEffect(() => {
+    if (userAuth) {
 
       fetchUserScore();
     }
+  }, [userAuth])
 
-  },[userAuth])
+  const fetchTop = async () => {
+    axios.get(`http://localhost:8080/users/`)
+      .then(response => {
+        console.log("test", response)
+        setTop(response.data)
+        console.log("top :", response)
+      })
+      .catch(error => {
+        console.error('Error fetching user score:', error);
+      });
+  };
+  console.log(userScore)
+  useEffect(() => {
+    if (userAuth) {
+
+      fetchTop();
+    }
+  }, [userAuth])
+
   return (
     <div className="Quiz">
       <div className='quizStart'>
-      <ul>Surah Quiz :</ul>
-      {showScore ? (
-        <div>
-          <li>Quiz Finished!</li>
-          <li>Your Score:<span> {score} / 5</span></li>
-          <button onClick={refreshPage}>Retry Quiz</button>
-        </div>
-      ) : (
-        currentQuestion && (
+        <ul>Surah Quiz :</ul>
+        {showScore ? (
           <div>
-            <p>{currentQuestion.questionText}</p>
-            <div>
-              {currentQuestion.options.map((option, index) => (
-                <button key={index} onClick={() => handleAnswer(option)}>
-                  {option}
-                </button>
-              ))}
-            </div>
+            <li>Quiz Finished!</li>
+            <li>Your Score:<span> {score} / 5</span></li>
+            <button onClick={refreshPage}>Retry Quiz</button>
           </div>
-        )
-      )}
-    </div>
-    <div className="userProfile">
-      <ul>User  Profile :</ul>
-      <li> Username : <span>{userName}</span> </li>
-      <li>Totale Score : <span>{userScore}</span> </li>
-    </div>
+        ) : (
+          currentQuestion && (
+            <div>
+              <p>{currentQuestion.questionText}</p>
+              <div>
+                {currentQuestion.options.map((option, index) => (
+                  <button key={index} onClick={() => handleAnswer(option)}>
+                    {option}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )
+        )}
+      </div>
+      <div className="userProfile">
+        <ul>User  Profile :</ul>
+        <li> Username : <span>{userName}</span> </li>
+        <li>Totale Score : <span>{userScore}</span> </li>
+        <ul>Top 3 :</ul>
+        {top && top.length > 0 ? (
+          top.map(user => (
+            <li key={user._id} className="top">
+              Username: <span>{user.username}</span> - Score: <span>{user.score}</span>
+            </li>
+          ))
+        ) : (
+          <li>No top users found</li>
+        )}
+
+      </div>
     </div>
   );
 }
