@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Home from "./assets/components/pages/Home";
-import Surah from "./assets/components/pages/Surah";
-import Navbar from "./assets/components/pages/navBar";
+import Home from "./components/pages/Home";
+import Surah from "./components/pages/Surah";
+import Navbar from "./components/pages/navBar";
 import './App.css';
-import Main from './assets/components/pages/Main';
-import Signup from './assets/components/pages/Signup';
-import Login from './assets/components/pages/Login';
-import Quiz from './assets/components/pages/Quiz';
+import Main from './components/pages/Main';
+import Signup from './components/pages/Signup';
+import Login from './components/pages/Login';
+import Quiz from './components/pages/Quiz';
 import {useState,useEffect } from "react"
 
 import {auth} from "./assets/config"

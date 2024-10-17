@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../styles/navBar.css";
-import {auth} from "./../../config"
+import {auth} from "../../assets/config"
 import {signOut} from "firebase/auth"
 function Navbar({userAuth,setUserAuth}) {
     const [isOpen, setIsOpen] = useState(false);
