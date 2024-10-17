@@ -2,7 +2,7 @@
 # Bady_Mohamed_Quran_Capstone
 # Bady_Mohamed_Quran_Capstone
 
-# Quranic Application
+# Quran Application
 
 ## Project Overview
 
