@@ -4,6 +4,7 @@ import { auth } from '../../assets/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function Login({setUserAuth}) {
   const navigate = useNavigate()
@@ -55,6 +56,7 @@ function Login({setUserAuth}) {
             />
           </div>
           <button type="submit" className="submit-button">Login</button>
+          <h3>don't have an account <Link to={"/signup/"}>Signup here</Link> </h3>
           {loading && <h5>loading</h5>}
           {success && <h5 style={{ color: "green" }}>log in is succesful</h5>}
           {error && <h5 style={{ color: "red" }}>{error} </h5>}
