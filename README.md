@@ -6,7 +6,7 @@
 
 ## Project Overview
 
-This project is a **Quran Application** developed using **React** for the frontend and **Express.js** for the backend. It offers an interactive platform for users to explore the Quran. The main aim is to make learning and understanding the Quran easier by providing users with a structured way to browse Surahs, Ayahs, and engage with quizzes that reinforce their knowledge.
+This project is a **Quran Application** developed using **React** for the frontend and **Node.js** for the backend. It offers an interactive platform for users to explore the Quran. The main aim is to make learning and understanding the Quran easier by providing users with a structured way to browse Surahs, Ayahs, and engage with quizzes that reinforce their knowledge.
 
 ## Features
 
